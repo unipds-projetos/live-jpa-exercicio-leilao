@@ -13,6 +13,32 @@ Verifique as classes Java. Como mapeá-las para que funcionem com esse BD?
 
 **NÃO** vale mudar o conteúdo do BD, nem do `persistence.xml`, nem de atributos e métodos das classes Java.
 
+Na branch `resposta` há uma solução para o desafio.
+
+Anotações do JPA que você deverá usar:
+
+- `@Entity`
+- `@Id`
+- `@GeneratedValue`
+- `@Embeddable`
+- `@Embedded`
+- `@Inheritance`
+- `@ManyToOne`
+- `@OneToMany`
+- `@ManyToMany`
+- `@JoinTable`
+- `@JoinColumn`
+- `@OneToOne`
+- `@NamedQuery`
+- `@ElementCollection`
+- `@CollectionTable`
+
+Anotações do Bean Validation que você deverá usar:
+
+- `@NotNull`
+- `@Size`
+- `@Future`
+
 ## Como executar o projeto
 
 1.  Inicie o container do MySQL usando o Docker Compose:
