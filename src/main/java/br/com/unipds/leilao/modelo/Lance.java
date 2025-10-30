@@ -1,20 +1,31 @@
 package br.com.unipds.leilao.modelo;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+@Entity
 public class Lance {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private BigDecimal valor;
 
+  @NotNull
+  @Future
 	private Calendar dataHora;
 
 	private boolean vencedor = false;
 
+  @ManyToOne
 	private Item item;
 
+  @ManyToOne
 	private Usuario usuario;
 
 	public Integer getId() {

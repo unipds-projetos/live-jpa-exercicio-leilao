@@ -1,19 +1,32 @@
 package br.com.unipds.leilao.modelo;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@NamedQuery(name="Item.contaTotalDeItensCadastrados", query = "select count(*) from Item item")
 public class Item {
 
-	private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
+  @NotNull
+  @Size(min = 5)
 	private String nome;
 
 	private BigDecimal precoInicial;
 
+  @OneToOne
 	private Leilao leilao;
 
+  @ElementCollection
+  @CollectionTable(name = "CategoriasDoItem")
 	private List<String> categorias = new ArrayList<>();
 
 	public Integer getId() {

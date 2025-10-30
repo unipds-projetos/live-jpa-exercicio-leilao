@@ -1,8 +1,14 @@
 package br.com.unipds.leilao.modelo;
 
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class FormaDePagamento {
 
-	private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
 	public Integer getId() {
 		return id;

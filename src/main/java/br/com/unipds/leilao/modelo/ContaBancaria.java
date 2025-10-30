@@ -1,5 +1,8 @@
 package br.com.unipds.leilao.modelo;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class ContaBancaria extends FormaDePagamento {
 
 	private String banco;

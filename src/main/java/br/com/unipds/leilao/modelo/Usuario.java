@@ -1,68 +1,78 @@
 package br.com.unipds.leilao.modelo;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Usuario {
 
-	private String email;
+    @Id
+    private String email;
 
-	private String nome;
+    private String nome;
 
-	private String sobrenome;
+    private String sobrenome;
 
-	private Endereco endereco;
+    @Embedded
+    private Endereco endereco;
 
-	private List<FormaDePagamento> formasDePagamento = new ArrayList<>();
-	
-	private List<Lance> lances = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "Usuario_FormaDePagamento",
+               joinColumns = @JoinColumn(name = "usuario_email"),
+               inverseJoinColumns = @JoinColumn(name = "formasDePagamento_id"))
+    private List<FormaDePagamento> formasDePagamento = new ArrayList<>();
 
-	public String getEmail() {
-		return email;
-	}
+    @OneToMany(mappedBy = "usuario")
+    private List<Lance> lances = new ArrayList<>();
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getSobrenome() {
-		return sobrenome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
+    public String getSobrenome() {
+        return sobrenome;
+    }
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+    public Endereco getEndereco() {
+        return endereco;
+    }
 
-	public List<FormaDePagamento> getFormasDePagamento() {
-		return formasDePagamento;
-	}
-	
-	public void adicionaFormaDePagamento(FormaDePagamento forma) {
-		this.formasDePagamento.add(forma);
-	}
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
-	public List<Lance> getLances() {
-		return lances;
-	}
-	
-	public void adicionaLance(Lance lance) {
-		this.lances.add(lance);
-	}
+    public List<FormaDePagamento> getFormasDePagamento() {
+        return formasDePagamento;
+    }
+
+    public void adicionaFormaDePagamento(FormaDePagamento forma) {
+        this.formasDePagamento.add(forma);
+    }
+
+    public List<Lance> getLances() {
+        return lances;
+    }
+
+    public void adicionaLance(Lance lance) {
+        this.lances.add(lance);
+    }
 
 }
