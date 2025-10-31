@@ -11,7 +11,7 @@ Analise a estrutura do BD. Dica: pode olhar o script `leilao.sql` para ter uma i
 
 Verifique as classes Java. Como mapeá-las para que funcionem com esse BD?
 
-**NÃO** vale mudar o conteúdo do BD, nem do `persistence.xml`, nem de atributos e métodos das classes Java.
+**NÃO** vale mudar o conteúdo do BD, nem de atributos e métodos das classes Java.
 
 Na branch `resposta` há uma solução para o desafio.
 
